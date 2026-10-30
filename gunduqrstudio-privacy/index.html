@@ -1,1 +1,136 @@
-hi
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kebijakan Privasi — Gundu QR Studio</title>
+<style>
+  :root, .light {
+    --bg: #F8FAFC; --fg: #0F172A; --muted: #475569; --accent: #0284C7;
+    --card: #E2E8F0; --line: #CBD5E1;
+  }
+  .dark {
+    --bg: #0F172A; --fg: #E2E8F0; --muted: #94A3B8; --accent: #38BDF8;
+    --card: #1E293B; --line: #334155;
+  }
+  html, body { margin: 0; background: var(--bg); }
+  body { font-family: system-ui, -apple-system, sans-serif; color: var(--fg); line-height: 1.6; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 24px 20px 48px; }
+  h1 { color: var(--accent); font-size: 1.5rem; margin-bottom: 4px; }
+  h2 { color: var(--accent); font-size: 1.1rem; margin-top: 28px; }
+  .meta { color: var(--muted); font-size: 0.85rem; margin-bottom: 24px; }
+  ul { padding-left: 20px; }
+  li { margin-bottom: 8px; }
+  .card { background: var(--card); border-radius: 12px; padding: 14px 16px; margin: 16px 0; }
+  .en-block { color: var(--muted); font-size: 0.92em; }
+  hr { border: none; border-top: 1px solid var(--line); margin: 32px 0; }
+  a { color: var(--accent); }
+  .lang-en { display: none; }
+  .lang-en .en-only { display: block; }
+  .lang-en .id-only { display: none; }
+</style>
+</head>
+<body>
+<script>
+  // Local-only: read theme & lang from the URL the app passes in.
+  var p = new URLSearchParams(location.search);
+  if (p.get('theme') === 'dark') document.body.className = 'dark';
+  else document.body.className = 'light';
+  if (p.get('lang') === 'en') {
+    document.body.classList.add('lang-en');
+    document.documentElement.lang = 'en';
+  }
+</script>
+<div class="wrap">
+
+  <div class="id-only">
+    <h1>Kebijakan Privasi</h1>
+    <div class="meta">Gundu QR Studio — versi 1.2 · Diperbarui: 30 Oktober 2026</div>
+    <div class="card"><strong>Prinsip utama:</strong> semua pemrosesan QR dan kredensial WiFi dilakukan <strong>lokal di perangkat Anda</strong>. Aplikasi ini tidak memiliki server, tidak mengirim data ke mana pun, dan tidak mengumpulkan data pribadi.</div>
+    <h2>1. Data yang diproses</h2>
+    <ul>
+      <li><strong>SSID, password/kunci, dan tipe keamanan WiFi</strong> — hanya diproses di perangkat untuk membuat atau membaca QR code. Tidak pernah dikirim keluar perangkat.</li>
+      <li><strong>Riwayat QR (opsional)</strong> — jika Anda mengaktifkan riwayat, data jaringan disimpan <strong>hanya di penyimpanan lokal</strong> perangkat (DataStore). Dapat dihapus kapan saja dari menu Pengaturan → Hapus riwayat.</li>
+      <li><strong>Pengaturan</strong> (bahasa, tema, preferensi iklan) — disimpan lokal di perangkat.</li>
+    </ul>
+    <h2>2. Yang TIDAK kami lakukan</h2>
+    <ul>
+      <li>Tidak mengirim kredensial WiFi ke server apa pun.</li>
+      <li>Tidak menulis password ke log, crash report, atau analytics.</li>
+      <li>Tidak menyimpan kredensial tanpa persetujuan eksplisit Anda (riwayat harus diaktifkan).</li>
+      <li>Tidak meminta izin lokasi secara permanen — izin lokasi hanya diminta saat Anda menekan "Gunakan jaringan saat ini" (kebutuhan API Android untuk membaca SSID).</li>
+      <li>Tidak meminta izin kamera kecuali Anda membuka pemindai QR.</li>
+    </ul>
+    <h2>3. Izin (permissions)</h2>
+    <ul>
+      <li><strong>Kamera</strong> — hanya untuk memindai QR code, hanya saat pemindai dibuka.</li>
+      <li><strong>Lokasi (fine)</strong> — hanya saat Anda memilih "Gunakan jaringan saat ini", sesuai persyaratan API Android 8+ untuk membaca SSID. Ditolak? Fitur itu tidak tersedia, sisanya tetap normal.</li>
+      <li><strong>Penyimpanan</strong> — untuk menyimpan/membagikan file PNG QR (via MediaStore, tanpa izin tambahan di Android 10+).</li>
+    </ul>
+    <h2>4. Iklan (Google Mobile Ads / AdMob)</h2>
+    <ul>
+      <li>Iklan banner hanya ditampilkan di layar <strong>Pengaturan</strong> dan <strong>Bantuan</strong> — tidak pernah saat memindai, saat dialog koneksi, atau di atas QR code.</li>
+      <li>Iklan dapat <strong>dimatikan</strong> dari Pengaturan → Tampilkan iklan.</li>
+      <li>Google Ads SDK dapat mengumpulkan data perangkat (ID iklan, versi OS) untuk tujuan pengiklanan, sesuai kebijakan privasi Google: <a href="https://policies.google.com/privacy">policies.google.com/privacy</a>.</li>
+      <li>Aplikasi ini tidak mengirim data WiFi Anda ke Google atau pihak ketiga mana pun.</li>
+    </ul>
+    <h2>5. SDK pihak ketiga</h2>
+    <ul>
+      <li><strong>Google Mobile Ads SDK</strong> — menampilkan iklan (lihat di atas).</li>
+      <li><strong>Google ML Kit Barcode Scanning</strong> — pemindaian QR on-device, data tidak meninggalkan perangkat.</li>
+      <li><strong>CameraX</strong> — akses kamera untuk pemindaian.</li>
+      <li><strong>ZXing Core</strong> — pembuatan QR code, sepenuhnya lokal.</li>
+    </ul>
+    <h2>6. Anak di bawah umur</h2>
+    <p>Aplikasi ini tidak ditujukan untuk anak di bawah 13 tahun dan tidak sengaja mengumpulkan data dari mereka.</p>
+    <h2>7. Perubahan &amp; kontak</h2>
+    <p>Perubahan kebijakan akan ditandai dengan tanggal diperbarui di halaman ini. Pertanyaan: <strong>snrt_indar@ub.ac.id</strong>.</p>
+  </div>
+
+  <div class="en-only">
+    <h1>Privacy Policy</h1>
+    <div class="meta">Gundu QR Studio — version 1.2 · Updated: October 30, 2026</div>
+    <div class="card"><strong>Core principle:</strong> all QR processing and WiFi credentials are handled <strong>locally on your device</strong>. This app has no server, sends data nowhere, and collects no personal data.</div>
+    <h2>1. Data processed</h2>
+    <ul>
+      <li><strong>WiFi SSID, password/key, and security type</strong> — processed on-device only, to create or read QR codes. Never sent off the device.</li>
+      <li><strong>QR history (optional)</strong> — if you enable history, network data is stored <strong>only in local device storage</strong> (DataStore). You can delete it anytime in Settings → Clear history.</li>
+      <li><strong>Preferences</strong> (language, theme, ad settings) — stored locally on the device.</li>
+    </ul>
+    <h2>2. What we do NOT do</h2>
+    <ul>
+      <li>We do not send WiFi credentials to any server.</li>
+      <li>We do not write passwords to logs, crash reports, or analytics.</li>
+      <li>We do not store credentials without your explicit consent (history must be enabled).</li>
+      <li>We do not request location permanently — location is requested only when you tap "Use current network" (required by the Android API to read the SSID).</li>
+      <li>We do not request camera permission unless you open the QR scanner.</li>
+    </ul>
+    <h2>3. Permissions</h2>
+    <ul>
+      <li><strong>Camera</strong> — only to scan QR codes, only while the scanner is open.</li>
+      <li><strong>Location (fine)</strong> — only when you choose "Use current network", per Android 8+ API requirements to read the SSID. If denied, that feature is unavailable; everything else works normally.</li>
+      <li><strong>Storage</strong> — to save/share the QR PNG file (via MediaStore, no extra permission on Android 10+).</li>
+    </ul>
+    <h2>4. Ads (Google Mobile Ads / AdMob)</h2>
+    <ul>
+      <li>Banner ads appear only on the <strong>Settings</strong> and <strong>Help</strong> screens — never during scanning, connection dialogs, or over QR codes.</li>
+      <li>Ads can be <strong>disabled</strong> in Settings → Show ads.</li>
+      <li>The Google Ads SDK may collect device data (ad ID, OS version) for advertising purposes, per Google's privacy policy: <a href="https://policies.google.com/privacy">policies.google.com/privacy</a>.</li>
+      <li>This app does not send your WiFi data to Google or any third party.</li>
+    </ul>
+    <h2>5. Third-party SDKs</h2>
+    <ul>
+      <li><strong>Google Mobile Ads SDK</strong> — displays ads (see above).</li>
+      <li><strong>Google ML Kit Barcode Scanning</strong> — on-device QR scanning; data does not leave the device.</li>
+      <li><strong>CameraX</strong> — camera access for scanning.</li>
+      <li><strong>ZXing Core</strong> — QR code generation, fully local.</li>
+    </ul>
+    <h2>6. Children</h2>
+    <p>This app is not directed at children under 13 and does not knowingly collect data from them.</p>
+    <h2>7. Changes &amp; contact</h2>
+    <p>Policy changes will be marked with the updated date on this page. Questions: <strong>snrt_indar@ub.ac.id</strong>.</p>
+  </div>
+
+</div>
+</body>
+</html>
